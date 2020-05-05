@@ -1,0 +1,78 @@
+HTML + CSS + JS
+HTML content layer
+CSS presentation
+Javascript interactive layer
+
+
+https://babeljs.io - transpiler
+
+jQuery simplifies the use of JS
+
+Frameworks: Angular, React, Vue etc open source run in the browser and only pull data from the server.
+
+Node.js use JS as a server side programing languages use for advance operations and applications.
+
+Browser development tools (chrome):
+  right click and inspect
+  cmd + opt + i
+  cmd + opt + j to open the console and type js commands like:
+    alert("hello world!")
+    var date = new Date()
+      alert("today is " + date)
+    console.log("today is " + date)
+
+Adding content from console into 02_02 file
+  document.body.innerHTML = "<h1>today is " + date + "</h1>"
+  document.body.innerHTML = "<h1> Today is " + (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear() + "</h1>"
+
+Rules:
+    1. JS is case sensitive
+    2. camelCase for naming convention
+    2.1 Variables start with lowercase and cannot start with a number (e.g. var greenDuck)
+    2.2 Objects and classes start with upper letter (e.g. Date())
+    2.3 Constants are all caps (e.g. cons = CONSTANTUPPERCASE)
+    3. Whitespace matters to humans no JS
+    4. End each statement with Semicolon (to make it readable)
+    5. Use comments liberally
+      // one line
+      /* multiple lines */
+
+---Some basics---
+02_03
+inline js (inside HTML) <script></script>
+in head, body or after body it all depends when it should run
+before contents are rendered add them to header
+  <script>
+    var date = new Date()
+    document.body.innerHTML = "<h1> Today is " + (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear() + "</h1>";
+  </script>
+inner is fine for 1 page and simple
+
+02_04
+to call a JS
+  <script src = "script.js"></script>
+
+JS render blocking means that browser stops rendering till it downloads and executes js file - solved with HTTP2
+  <script src = "script.js" async></script> //download is parallel and then executes
+  <script src = "script.js" defer></script> //download is parallel and executed as the very end
+
+---Working with data---
+Variable is a generic container to hold data (int, list, array, string, anything!)
+  var myVariable;
+  var a;
+  var b;
+  a = 4;
+  b = 5;
+  var sum = a + b;
+  var a, b, sum;
+  var a = 4, b = 5, sum = a + b;
+  you can call variables from the browser console
+
+Data types
+  Numeric numbers and integers (integer, decimal, negatives, etc)
+  String letters or symbols between quotation marks "" or '' \"escaped\"
+  Boolean true - false (lowercase)
+  Null absence of object value (lowercase)
+  Undefined variable without content
+
+  console.log(typeof negInteger) to get variable type
