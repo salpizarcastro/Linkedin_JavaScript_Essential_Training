@@ -17,7 +17,7 @@ Node.js use JS as a server side programing languages use for advance operations 
 Browser development tools (chrome):
   right click and inspect
   cmd + opt + i
-  cmd + opt + j to open the console and type js commands like:
+  cmd + opt + j to open the console and  type js commands like:
     alert("hello world!")
     var date = new Date()
       alert("today is " + date)
@@ -77,4 +77,250 @@ Data types
   Null absence of object value (lowercase)
   Undefined variable without content
 
-  console.log(typeof negInteger) to get variable type
+  console.log(typeof variableName) to get variable type
+
+Operators
+  = assignment
+  == condition of equality
+  === absolute string equality
+  != or !==
+  Shorthand math +=, -=, *=, /=, ++, --
+    a += 4 >> a = a + 4
+    a++    >> a = a + 1 after
+    ++a    >> before
+
+    'string' + 'other string' = 'stringotherstring'
+    4 + '5' = '45'
+    4 - '3' = 1 >> its converter to number
+    4 + 'xxx' = NaN
+
+Conditions and Logic
+  if (condition){
+    code block
+  } else {
+    code block for something else
+  }
+
+shortcut or ternary operator
+  condition ? true : false
+  a == b ? code block : code block for something else
+
+if (a == b && c == d) >> and
+if (a == b || c == d) >> or
+
+XOR
+  if((a == b || c == d) && ((a == b) != (c == d)))
+
+Arrays (0 index based)
+  var letters;
+  letters = ['a', 'b', 'c'];
+  or
+  letters = new Array('a', 'b', 'c');
+
+  var allobjects;
+  allobjects = ['a', 100, true];
+  allobject[1] = 200
+  allobjects = ['a', 200, true];
+
+  Functions
+    array.lenght()
+    array.reverse()
+    array.shift() >> removes first item
+    array.unshift('first', 'second') >> adds items at the beggining
+    array.push() >> adds at the end
+    array.splice(position, item to remove) >> remove items
+    array.slice() >> creates a copy
+    array.indexOf(item, index to start from) >> search for first item
+    array.join(separator) >> returns a string
+
+Functions
+  Name functions
+    function multiply (a, b){
+      var result = a * b;
+      console.log(result);
+      return result;
+    }
+
+  Anonymous functions
+    var divide = function(){
+      var result = 4 / 2;
+      console.log(result);
+      return result;
+    }
+    divide(); >> the variable must be called as a function
+
+  Immediately invoked functions
+  var firstVariable = 7/9;
+  var secondVariable = 13/25;
+  var divide = (function(a, b){
+    var result = 4 / 2;
+    console.log(result);
+    return result;
+  })(firstVariable, secondVariable)
+  divide; >> if we want to assigned the returned value to the variable right away.
+
+Variable Scope
+Global variable = defined in the root of the script
+Local variable = inside a function
+variables without "var" prefix can be created as Global - DON'T
+
+const: Constants, don't change
+let: Block (if/loop/etc) scope variable, smaller than var
+    function logScope(){
+      var localVar = 2;
+      if(localVar){
+        let localVar = 'Im different!';
+        console.log('nested LocalVar:', localVar);
+      }
+      console.log("logScope localVar", localVar);
+    }
+    logScope();
+
+Objects
+  var course = {
+    title: 'My Title',
+    instructor: 'Mr Instructor',
+    level: 1,
+    published: true,
+    views: 0,
+    updateViews: function(){
+      return ++course.views;
+    }
+  }
+
+  console.log(course);
+  console.log(course.views);
+  course.updateViews();
+
+Object constructors 04_10
+  function Course(title, instructor, level, published, views){
+    this.title = title;
+    this.instructor = instructor;
+    this.level = level;
+    this.published = published;
+    this.views = views;
+    this.updateViews = function() {
+        return ++course.views;
+    };
+  }
+
+  //var course01 = new Course('My Title', 'Mr Instructor', 1, true, 0);
+  //var course02 = new Course('My Title JS', 'Mr Instructor Jr', 1, true, 66);
+  //console.log(course01);
+  //console.log(course02);
+
+  var courses =  [
+    new Course('My Title', 'Mr Instructor', 1, true, 0),
+    new Course('My Title JS', 'Mr Instructor Jr', 1, true, 66)
+  ] >> to put everything in an array
+
+Dot vs Bracket notation
+course.title   =   course['title']   >> both do the same but brackets my deal better with weird naming conventions.
+
+Closure 04_12 (developer.mozilla.org/en/docs/Web/JavaScript/Closures)
+function inside a function that relies on variables in the outside function to work.
+  function doSomeMath() {
+  	var a = 5;
+  	var b = 4;
+  	function multiply(){
+  		var result = 4 * 5;
+  		return result;
+  	}
+  	return multiply;
+  }
+  var theResult = doSomeMath();
+  console.log(theResult());
+
+BOM: Browser object model
+DOM: The document object model inside the BOM which contains multiple nodes (HTML nodes)
+
+BOM or window properties (developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+window.innerHeight
+window.innerWidth
+window.open()
+window.document() >> or just document
+
+Targeting elements (developer.mozilla.org/en-US/docs/Web/API/document)
+document.body;
+document.title;
+document.URL;
+document.getElementById('ID');
+document.getElementByClassName('class name');
+document.getElementByTagName('tag name');
+
+document.querySelector('.main-nav a'); >> returns the first element matching
+  document.querySelector(".menu .has-children a")
+document.querySelectorAll('.post-content p'); >> get all elements matching
+  document.querySelectorAll(".menu li a, .social-nav li a")
+  document.querySelectorAll(".social-nav a[href*='linkedin.com']")
+
+. for class
+- for ID
+
+Access and change elements (developer.mozilla.org/en-US/docs/Web/API/element)
+  document.querySelector('.main-title').innerHTML = 'new text here!!'
+  document.querySelector('#showcase').id = 'slideshow' >> for IDs
+  document.querySelector('.masthead') >> classes
+  document.querySelector('.masthead').className
+  document.querySelector(".masthead").classList >> when multiple
+  document.querySelector(".masthead").classList[0]
+  document.querySelector(".masthead").classList.add("new-class") >> add new class
+  document.querySelector(".masthead").classList.remove("clear") >> remove existing class
+  document.querySelector(".new-class").classList.toggle("masthead") >> remove (return false) and then add when called again (return true)
+  document.querySelector(".new-class").classList.contains("masthead") >> checks if exists
+
+Attributes 05_05
+  - hasAttritbute
+  - getAttribute
+  - setAttribute(name, value)
+  - removeAttribute(name)
+
+  /*
+  <div class="cta">
+      <a href="#">Book Now!</a>
+  </div><!-- .cta -->
+  */
+  const CTAELEMENT = document.querySelector(".cta a");
+  if(CTAELEMENT.hasAttribute("target")){
+    console.log(CTAELEMENT.getAttribute("target"));
+  } else {
+    CTAELEMENT.setAttribute("target", "_blank");
+  }
+  console.log(CTAELEMENT.attributes);
+  //<a href="#" targer = "_blank">Book Now!</a>
+
+Add DOM elements 05_06
+  - Get an element
+    const ELEM = document.querySelector(".main-title");
+  - Set the inner HTML
+    ELEM.innerHTML = "this is the new title"
+  - Set the outer HTML
+    ELEM.outerHTML = '<h1 class = "main-title"> this is the new title </h1>'
+  Steps:
+    1. create element >> .createElement()
+    2. create text node that goes inside element >> createTextNode()
+    3. add text node into element
+    4. add element to the DOM tree >> appendChild()
+
+    const FEATURE = document.querySelector(".featured-image");
+    const THEIMAGE = FEATURE.querySelector("img");
+    var altText = THEIMAGE.getAttribute("alt");
+    var captionElement = document.createElement("figCaption");
+    //var captionText = document.createTextNode(altText);
+    //captionElement.appendChild(captionText);
+    //console.log(captionElement);
+    //FEATURE.appendChild(captionElement);
+    //New
+    captionElement.append(altText);
+    FEATURE.append(captionElement);
+    //
+    THEIMAGE.setAttribute("alt", "");
+
+Inline CSS (developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
+  JS never writes to CSS properties
+    document.querySelector(".cta a").style
+    document.querySelector(".cta a").style.color = "green"
+    document.querySelector(".cta a").style.backgroundColor = "blue"
+    document.querySelector(".cta a").style.cssText = "padding: 1em; color: white; backgroundColor = red"
+  Inline styles are actually attributes so all same methods work
+    document.querySelector(".cta a").setAttribute("style", "padding: 1em; color: white; backgroundColor = red")
