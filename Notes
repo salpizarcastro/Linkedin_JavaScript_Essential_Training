@@ -255,7 +255,7 @@ document.querySelectorAll('.post-content p'); >> get all elements matching
   document.querySelectorAll(".social-nav a[href*='linkedin.com']")
 
 . for class
-- for ID
+# for ID
 
 Access and change elements (developer.mozilla.org/en-US/docs/Web/API/element)
   document.querySelector('.main-title').innerHTML = 'new text here!!'
@@ -324,3 +324,107 @@ Inline CSS (developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
     document.querySelector(".cta a").style.cssText = "padding: 1em; color: white; backgroundColor = red"
   Inline styles are actually attributes so all same methods work
     document.querySelector(".cta a").setAttribute("style", "padding: 1em; color: white; backgroundColor = red")
+
+SVG Scalable Vector Graphics (https://www.w3schools.com/html/html5_svg.asp)
+
+Clock project 06_02
+
+DOM Events 07_03
+  Browser level Events (developer.mozilla.org/en-US/docs/Web/Events)
+    Load - finished loading
+    Error - failed to loading
+    Online / offline
+    Resize
+    Scroll
+  DOM Events
+    Focus - click, tabbed, etc
+    Blur - loose focus, leaving form field, etc
+    Reset / Submit - form specific
+    Mouse events - click, mouseover, drag, drop, etc
+  Other
+    Media - audio, video playback
+    Progress - monitor ongoing browser progress
+    CSS transition events - transition start, run, end
+
+    const CTA = document.querySelector(".cta a");
+    const ALERT = document.querySelector("#booking-alert");
+    CTA.classList.remove("hide");
+    ALERT.classList.add("hide");
+    function reveal(e){
+      e.preventDefault();
+      CTA.classList.toggle("hide");
+      ALERT.classList.toggle("hide");
+    }
+    CTA.onclick = reveal;
+
+    when using event listener you can stack multiple
+    CTA.addEventListener("click", reveal, false);
+    CTA.addEventListener("click", function(){console.log("button was clicked")}, false);
+
+Typing speed tester 08_03
+
+Loops
+- break terminate the current loop
+- continue terminate the current iteration of the loop
+
+  for(var i = 0; i < 10; i++){
+    code here
+  }
+
+  var i = 0;
+  while(i < 10){
+    code here
+    i ++;
+  }
+
+  do{
+      code here
+  } while()
+
+
+Validation and troubleshooting
+- console additional features: developer.mozilla.org/en/docs/Web/API/console
+  console.info
+  console.error
+- Sources tab in Chrome browser
+  add break points in the code
+  you can run line by line with the up and down arrows on the top menu of the right panel
+  if hove over a variable you can actually see the values
+- JSLink.com (extremely opinionated)
+  you can copy&past the code there
+- JSHint (more relaxed)
+  Enable ES6
+- NPM node package manager
+- ESLint
+  Command line tool
+  for atom https://atom.io/packages/linter-eslint
+
+
+Arrow functions =>
+
+  var sumTotal = function(price, tax){
+    return price * ((tax / 100) + 1);
+  }
+  console.log(sumTotal(6, 12));
+same as
+  var sumTotal = (price, tax) => price * ((tax / 100) + 1);
+  console.log(sumTotal(6, 12));
+
+JavaScript vs TypeScript?
+  JS is the core
+  ES2015 latest standard
+  TypeScript is an abstraction layer on top of JS
+  Angular, React, View, etc are frameworks that run on the client side browser
+  These are single page applications.
+
+Strings in ES2015 (ES6)
+  Template literals - template Strings
+  It actually honors 'enters' without doing /n
+
+  console.log(a + ' divided by ' + b + ' is ' + (a / b) + '.')
+    same as
+  console.log(${a} divided by ${b} is ${a/b})
+
+% modulus or remained
+  11 % 3 = 2
+  Good to know if a number is a prime 
