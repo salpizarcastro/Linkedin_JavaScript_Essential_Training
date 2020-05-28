@@ -427,4 +427,14 @@ Strings in ES2015 (ES6)
 
 % modulus or remained
   11 % 3 = 2
-  Good to know if a number is a prime 
+  Good to know if a number is a prime
+
+document.getElementByID() and document.getElementByClassName() are good if you have the actual ID or name
+document.querySelector() and document.querySelectorAll() applies to any property
+  document.querySelector('input[name="login"]') --> will return the first occurent
+
+
+Whats next:
+- https://developer.mozila.org/en-US/docs/Web/JavaScript
+- JQuery essential training
+- React.js essential training
